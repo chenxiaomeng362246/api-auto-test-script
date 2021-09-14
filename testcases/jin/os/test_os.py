@@ -6,6 +6,7 @@ import api_call.jin.os.api_os as api_os
 
 
 
+
 class OsTest(unittest.TestCase):
 
     @classmethod
@@ -21,8 +22,26 @@ class OsTest(unittest.TestCase):
         """
             [POST]获取某个组织的组织详情
         """
-        org_prn = "prn:Organization::ApiTest"
+        prn = "prn:Organization::ApiTest"
         # 获取组织详情  //ApiTest
         err_message = '获取组织详情失败'
-        response = self.lesson_object.api_getOrgDetails(org_prn)
+        response = self.lesson_object.api_getOrgDetails(prn)
+        glb.rest_o.parse_response(response, glb.CODE200, err_message)
+
+    def test_searchOrgRequests(self):
+        """
+            [POST]获取org request列表
+        """
+        # 获取组织详情  //ApiTest
+        err_message = '获取列表失败'
+        response = self.lesson_object.api_searchOrgRequests()
+        glb.rest_o.parse_response(response, glb.CODE200, err_message)
+
+    def test_get_activityLog_list(self):
+        """
+            [POST]获取activity log列表
+        """
+        # 获取组织详情  //ApiTest
+        err_message = '获取列表失败'
+        response = self.lesson_object.api_get_activityLog_list()
         glb.rest_o.parse_response(response, glb.CODE200, err_message)
