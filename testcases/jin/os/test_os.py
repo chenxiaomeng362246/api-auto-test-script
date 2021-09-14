@@ -18,6 +18,7 @@ class OsTest(unittest.TestCase):
         # 析构方法 退出登录
         pass
 
+# ============================================公共部分========================================
     def test_get_org_details(self):
         """
             [POST]获取某个组织的组织详情
@@ -28,20 +29,29 @@ class OsTest(unittest.TestCase):
         response = self.lesson_object.api_getOrgDetails(prn)
         glb.rest_o.parse_response(response, glb.CODE200, err_message)
 
-    def test_searchOrgRequests(self):
+    def test_orgRequestsList(self):
         """
             [POST]获取org request列表
         """
         # 获取组织详情  //ApiTest
         err_message = '获取列表失败'
-        response = self.lesson_object.api_searchOrgRequests()
+        response = self.lesson_object.api_orgRequestsList()
         glb.rest_o.parse_response(response, glb.CODE200, err_message)
 
-    def test_get_activityLog_list(self):
+    def test_getIntegrationsList(self):
+        """
+            [POST]获取org request列表
+        """
+        # 获取组织详情  //ApiTest
+        err_message = '获取列表失败'
+        response = self.lesson_object.api_getIntegrationsList()
+        glb.rest_o.parse_response(response, glb.CODE200, err_message)
+
+    def test_getActivityLogList(self):
         """
             [POST]获取activity log列表
         """
         # 获取组织详情  //ApiTest
         err_message = '获取列表失败'
-        response = self.lesson_object.api_get_activityLog_list()
+        response = self.lesson_object.api_getActivityLogList()
         glb.rest_o.parse_response(response, glb.CODE200, err_message)

@@ -44,7 +44,7 @@ class LessonPlan(BaseHttp):
 
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=True)
 
-    # ============================================公共部分========================================
+# ============================================公共部分========================================
 
     def api_getOrgDetails(self, prn):
         url = '/org-support/graphql'
@@ -60,7 +60,7 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, body)
         return res
 
-    def api_searchOrgRequests(self):
+    def api_orgRequestsList(self):
         url = '/org-support/graphql'
         body = {
           "operationName": "SearchOrgRequests",
@@ -85,7 +85,28 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, body)
         return res
 
-    def api_get_activityLog_list(self):
+    def api_getIntegrationsList(self):
+        url = '/org-support/graphql'
+        body = {
+          "operationName": "SearchAssets",
+          "variables": {
+            "pageNumber": 0,
+            "pageSize": 25,
+            "sortDirection": "ASC",
+            "sortField": "NAME",
+            "searchString": "",
+            "filter": {
+              "type": "BUNDLE"
+            }
+          },
+          "query": "query SearchAssets($pageNumber: Int, $pageSize: Int, $sortDirection: SortDirection, $sortField: IntSortField, $filter: AssetSearchFilter, $searchString: String) {\n  searchAssets(request: {pageNumber: $pageNumber, pageSize: $pageSize, sortDirection: $sortDirection, sortField: $sortField, filters: $filter, searchString: $searchString}) {\n    assets {\n      id\n      name\n      description\n      lastUpdatedOn\n      ownerName\n      ... on Bundle {\n        status\n        intConfigIdsCount\n        mdmIntConfigIdsCount\n        __typename\n      }\n      __typename\n    }\n    totalPages\n    totalElements\n    isLastPage\n    isFirstPage\n    currentPage\n    __typename\n  }\n}\n"
+        }
+        body = json.dumps(body)
+        self.http_obj.set_header(self.header)
+        res = self.http_obj.post(url, body)
+        return res
+
+    def api_getActivityLogList(self):
         url = '/org-support/graphql'
         body = {
           "operationName": "SearchAudits",
