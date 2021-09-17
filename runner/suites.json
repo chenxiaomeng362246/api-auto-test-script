@@ -1,5 +1,5 @@
 {
-  "case_xq_dev": {
+  "case_xq_test1": {
     "title": "Promethean Portal+ 项目服务端接口dev环境_接口监控",
     "report_file": "report_DEV",
     "env": "dev",
@@ -35,7 +35,7 @@
 		117889919
     ]
   },
-  "case_xq_sandbox": {
+  "case_xq_test2": {
     "title": "Promethean Portal+ 项目服务端接口sandbox环境_接口监控",
     "report_file": "report_SANDBOX",
     "env": "sandbox",
