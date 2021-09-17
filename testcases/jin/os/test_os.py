@@ -40,7 +40,7 @@ class OsTest(unittest.TestCase):
 
     def test_getIntegrationsList(self):
         """
-            [POST]获取org request列表
+            [POST]获取Integrations列表
         """
         # 获取组织详情  //ApiTest
         err_message = '获取列表失败'
