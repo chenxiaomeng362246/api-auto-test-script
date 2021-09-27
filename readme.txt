@@ -1,5 +1,8 @@
 ﻿晓猛笔记
 一、项目介绍
+接口文档：
+https://wiki.prometheanjira.com/display/PANM/API+Documents
+
 1.运行项目要在python2.7 上
 2.修改项目路径下的venv->lib->orig-prefix.txt 内容为本电脑安装的python 解释器的路径
 3.选择File->settings->Python Interpreter->选择当前在项目内部的虚拟环境，
@@ -39,9 +42,10 @@ testcases      与前面api相关的接口调用
 
 二、使用方法
 1.例子：在api_call的xiaomeng里面先配置base去登录后获取到token值，
-配置api接口内容
-2.配置
-3.配置
+2.配置api接口内容
+3.配置suite.json添加对应的要运行的测试用例
+4.使用python runner.py XXX测试用例名字
+
 
 
 
